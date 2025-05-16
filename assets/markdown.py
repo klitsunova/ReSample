@@ -1,7 +1,8 @@
 import streamlit as st
+import os
 
 def set_markdown():
-    with open("assets/styles.css") as f:
+    with open(os.path.abspath("assets/styles.css")) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
     st.set_page_config(page_title="ReSample", layout="wide", page_icon="🔄")
