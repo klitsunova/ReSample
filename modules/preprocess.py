@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-def get_target_column(df):
-    return st.selectbox("🎯 Select the target variable:", [None] + list(df.columns), index=0, key='target_variable')
-
 def show_preprocessing_options(df):
     if df.isnull().sum().sum() > 0:
         st.warning("⚠️ Missing values detected in the dataset.")

@@ -58,7 +58,7 @@ def balance_data(df, target_column, sampling_method, sampling_strategy):
         X = df.drop(columns=[target_column])
         y = df[target_column]
         sampler = sampling_methods[sampling_method]
-        sampler.set_params(sampling_strategy = sampling_strategy)
+        sampler.set_params(sampling_strategy=sampling_strategy)
 
         X_resampled, y_resampled = sampler.fit_resample(X, y)
         return pd.concat([pd.DataFrame(X_resampled, columns=X.columns), pd.DataFrame(y_resampled, columns=[target_column])], axis=1)
