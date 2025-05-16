@@ -1,0 +1,16 @@
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+.stButton > button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.stSelectbox, .stRadio, .stDataFrame, .stTextInput {
+    font-size: 16px;
+}

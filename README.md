@@ -1,7 +1,7 @@
 # ReSample
 
 
-## 📊 Overview
+## Overview
 
 
 ---
