@@ -1,6 +1,6 @@
 import streamlit as st
 from modules import upload, preprocess, balance, visualize, download
-import markdown
+import assets.markdown as markdown
 
 df = upload.upload_dataset()
 if 'df' in locals() and df is not None:
