@@ -1,20 +1,25 @@
 import streamlit as st
 import pandas as pd
 
-def handle_missing_values(df, strategy="mean"):
-    if strategy == "drop":
-        return df.dropna()
-    elif strategy == "mean":
-        return df.fillna(df.mean())
-    elif strategy == "median":
-        return df.fillna(df.median())
-    elif strategy == "mode":
-        return df.fillna(df.mode().iloc[0])
-    else:
-        return df
+def get_target_column(df):
+    return st.selectbox("🎯 Select the target variable:", [None] + list(df.columns), index=0, key='target_variable')
 
-def show_preprocessing_options():
-    st.header("🧹 Предобработка данных")
-    missing_strategy = st.selectbox("Выберите стратегию обработки пропущенных значений", 
-                                    ["Нет", "Удалить строки", "Заполнить средним", "Заполнить медианой", "Заполнить модой"])
-    return missing_strategy
+def show_preprocessing_options(df):
+    if df.isnull().sum().sum() > 0:
+        st.warning("⚠️ Missing values detected in the dataset.")
+        st.write("### Missing Values Summary")
+        st.write(df.isnull().sum().rename('Missing Value Counts'))
+        missing_option = st.selectbox("🧹 Choose a missing value handling strategy:", ["None", "Drop Rows", "Fill with Mean", "Fill with Median","Fill with Mode"], key='missing_strategy')
+        if missing_option == "Drop Rows":
+            df.dropna(inplace=True)
+            st.success("✅ Missing values have been removed.")
+        elif missing_option == "Fill with Mean":
+            df.fillna(df.mean(), inplace=True)
+            st.success("✅ Missing values have been filled with column means.")
+        elif missing_option == "Fill with Median":
+            df.fillna(df.median(), inplace=True)
+            st.success("✅ Missing values have been filled with column medians.")
+        elif missing_option == "Fill with Mode":
+            df.fillna(df.mode().iloc[0], inplace=True)
+            st.success("✅ Missing values have been filled with column modes.")
+    return df

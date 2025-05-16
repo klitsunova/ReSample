@@ -1,21 +1,37 @@
 import streamlit as st
 import pandas as pd
+import time
 
-def load_data(file_path):
-    file_extension = file_path.split(".")[-1]
-    if file_extension == "csv":
-        return pd.read_csv(file_path)
-    elif file_extension == "xlsx":
-        return pd.read_excel(file_path)
+def upload_dataset():
+    data_option = st.radio("Choose dataset option:", ["Use Sample Data", "Upload New Data"], horizontal=True)
+    if data_option == "Upload New Data":
+        df = upload_new_dataset()
     else:
-        raise ValueError("Формат файла не поддерживается")
+        df = upload_sample_dataset()
+    return df
 
-def show_upload():
-    st.header("📂 Загрузка датасета")
-    uploaded_file = st.file_uploader("Загрузите файл (.csv, .xlsx)", type=["csv", "xlsx"])
-    
+def upload_new_dataset():
+    uploaded_file = st.file_uploader("📂 Upload your dataset (.csv or .xlsx)", type=["csv", "xlsx"])
     if uploaded_file is not None:
-        with st.spinner("⏳ Загружаем данные..."):
-            df = load_data(uploaded_file.name)
-            st.success("✅ Данные загружены!")
-            st.dataframe(df.head())
+        file_extension = uploaded_file.name.split(".")[-1]
+
+        with st.spinner("⏳ Loading dataset..."):
+            time.sleep(1)
+            if file_extension == "csv":
+                df = pd.read_csv(uploaded_file)
+            elif file_extension == "xlsx":
+                df = pd.read_excel(uploaded_file)
+
+        if df.select_dtypes(include=['object']).shape[1] > 0:
+            st.error("❌ The uploaded dataset contains non-numeric values. Please upload a dataset with numerical features only.")
+            df = None
+    return df
+
+def upload_sample_dataset():
+    sample_data_path = "sample_imbalanced_data_missing_data.csv"
+    with st.spinner("⏳ Loading sample dataset..."):
+        time.sleep(1)
+        df = pd.read_csv(sample_data_path)
+        st.success("✅ Using sample dataset.")
+    return df
+

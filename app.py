@@ -1,24 +1,17 @@
 import streamlit as st
-import pandas as pd
-import plotly.express as px
-import seaborn as sns
-import matplotlib.pyplot as plt
-from imblearn.over_sampling import SMOTE
-import time
 from modules import upload, preprocess, balance, visualize, download
+import markdown
 
-def load_styles():
-    with open("styles.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-st.set_page_config(page_title="Data Balancer", layout="wide", page_icon="🔄")
-st.title("🔄 Synthetic Data Generator")
-
-# Подключение стилей
-load_styles()
-
-upload.show_upload()
-preprocess.show_preprocessing_options()
-balance.show_balance_options()
-visualize.show_charts()
-download.show_download()
+df = upload.upload_dataset()
+if 'df' in locals() and df is not None:
+    visualize.show_dataset_preview(df)
+    df = preprocess.show_preprocessing_options(df)
+    target_column = balance.get_target_column(df)
+    if target_column is not None:
+        visualize.show_distribution(df, target_column)
+        sampling_strategy = balance.get_sampling_strategy()
+        sampling_method = balance.get_sampling_method()
+        df_balanced = balance.balance_data(df, target_column, sampling_method, sampling_strategy)
+        visualize.show_charts(df, df_balanced, target_column)
+        visualize.show_summary(df, df_balanced, target_column)
+        visualize.show_download_button(df_balanced)
