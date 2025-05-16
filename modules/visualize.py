@@ -85,10 +85,11 @@ def show_download_button(df):
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("<div>", unsafe_allow_html=True)
     st.write("### ⬇ Download Processed Dataset")
-    st.markdown(
-                '<a href="data:file/csv;base64,' + df.to_csv(index=False).encode('utf-8') + '" download="balanced_data.csv">'
-                '<button>Download Balanced CSV</button>'
-                '</a>',
-                unsafe_allow_html=True
+    st.download_button(
+        "Press to Download Balanced CSV",
+        df.to_csv(index=False).encode('utf-8'),
+        "balanced_data.csv",
+        "text/csv",
+        key='download-csv'
     )
     st.markdown("</div>", unsafe_allow_html=True)
