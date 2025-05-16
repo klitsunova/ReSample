@@ -49,7 +49,7 @@ def get_sampling_strategy():
         return sampling_strategy
     
 def get_sampling_method():
-    sampling_method = st.radio("⚖ Choose sampling method:", list(None) + list(sampling_methods.keys()), horizontal=True, index=0)
+    sampling_method = st.radio("⚖ Choose sampling method:", [None] + list(sampling_methods.keys()), horizontal=True, index=0)
     return sampling_method
 
 def balance_data(df, target_column, sampling_method, sampling_strategy):

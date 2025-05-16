@@ -2,6 +2,7 @@ import streamlit as st
 from modules import upload, preprocess, balance, visualize, download
 import assets.markdown as markdown
 
+markdown.set_markdown()
 df = upload.upload_dataset()
 if 'df' in locals() and df is not None:
     visualize.show_dataset_preview(df)
