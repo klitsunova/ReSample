@@ -10,8 +10,6 @@
 ## Overview
 **ReSample** is a web application designed to automatically balance datasets for machine learning tasks. It helps address class imbalances in datasets, improving model generalization and performance. It provides a user-friendly interface to handle missing values, balance class distributions, visualize the results and export the processed dataset.
 
-**Stack:** 
-
 <img src="https://github.com/user-attachments/assets/40b48ad3-ac7d-4cb1-ac44-cd307f62cd13" width="700">
 
 
