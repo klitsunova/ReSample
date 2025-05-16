@@ -3,6 +3,7 @@ import streamlit as st
 def set_markdown():
     st.markdown(
         """
+        <style>
         body {
             background-color: #f4f4f4;
             color: #333;
@@ -46,6 +47,7 @@ def set_markdown():
         .div {
             text-align: center;
         }
+        </style>
         """,
     unsafe_allow_html=True
     )
