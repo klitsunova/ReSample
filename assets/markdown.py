@@ -1,12 +1,56 @@
 import streamlit as st
-import os
 
 def set_markdown():
-    with open(os.path.abspath("assets/styles.css")) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    st.markdown(
+        """
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .stApp {
+            max-width: 100%;  /* Increase width */
+            margin: auto;
+        }
+        .css-18e3th9 {
+            padding: 2rem 8rem; /* Increase left and right padding */
+        }
+        .stButton > button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 10px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .stSelectbox, .stRadio, .stDataFrame, .stTextInput {
+            font-size: 16px;
+        }
+        .h1 {
+            font-size:35px; 
+            font-weight: bold; 
+            display: flex; 
+            align-items: center;
+        }
+        .h3 {
+            font-size:16px;
+        }
+        .button {
+            background-color:#4CAF50; 
+            color:white; 
+            padding:10px 24px; 
+            border:none; 
+            border-radius:8px; 
+            cursor:pointer;
+        }
+        .div {
+            text-align: center;
+        }
+        """,
+    unsafe_allow_html=True
+    )
 
-    st.set_page_config(page_title="ReSample", layout="wide", page_icon="🔄")
-    st.title("🔄 Synthetic Data Generator")
+    st.markdown("<h1>🔄 ReSample: Fix Imbalanced Data</h1>", unsafe_allow_html=True)
 
     st.sidebar.subheader("ℹ️ About this App")
     st.sidebar.info("""
