@@ -1,7 +1,7 @@
 # ReSample
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-<img src="https://github.com/user-attachments/assets/e0b5e7f6-f17b-4fdd-bff1-de6f80c67dd6" width="80">
+<img src="https://github.com/user-attachments/assets/3e5fae2f-0bb1-4c12-8694-470b15bb424a" width="80">
 ![Streamlit](https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-%233F4F75.svg?style=for-the-badge&logo=plotly&logoColor=white)
