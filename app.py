@@ -19,5 +19,6 @@ if 'df' in locals() and df is not None:
                 visualize.show_summary(df, df_balanced, target_column)
                 visualize.show_download_button(df_balanced)
             except ValueError:
-                st.write("Something went wrong :( The method may be not suitable for this dataset or ratio. Try another sampling method, please.")
+                st.write("Something went wrong :( The method may be not suitable for this dataset or ratio.")
+                st.write("Try to preprocess missing values if you don't or try another sampling method, please.")
             
