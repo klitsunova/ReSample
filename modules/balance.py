@@ -5,14 +5,13 @@ import time
 from imblearn.over_sampling import RandomOverSampler
 from imblearn.over_sampling import SMOTE
 from imblearn.over_sampling import BorderlineSMOTE
-from imblearn.over_sampling import KMeansSMOTE
 from imblearn.over_sampling import SVMSMOTE
 from imblearn.over_sampling import ADASYN
 
 from imblearn.under_sampling import RandomUnderSampler
 from imblearn.under_sampling import NearMiss
-from imblearn.under_sampling import CondensedNearestNeighbour
 from imblearn.under_sampling import TomekLinks
+from imblearn.under_sampling import CondensedNearestNeighbour
 from imblearn.under_sampling import EditedNearestNeighbours
 from imblearn.under_sampling import OneSidedSelection
 from imblearn.under_sampling import NeighbourhoodCleaningRule
@@ -23,6 +22,7 @@ sampling_methods = {
     'B-SMOTE': BorderlineSMOTE(),
     'B-SMOTE SVM': SVMSMOTE(),
     'ADASYN': ADASYN(),
+
     'RandomUnder': RandomUnderSampler(),
     'NearMiss-1': NearMiss(version=1),
     'NearMiss-2': NearMiss(version=2),
@@ -39,7 +39,6 @@ def get_target_column(df):
 
 def get_sampling_strategy():
     balance_ratio = st.radio("⚖ Choose balance ratio:", [None, "50:50", "70:30", "80:20"], horizontal=True, index=0)
-
     if balance_ratio:
         ratio_map = {
             "50:50": 1.0,
@@ -50,7 +49,7 @@ def get_sampling_strategy():
         return sampling_strategy
     
 def get_sampling_method():
-    sampling_method = st.radio("⚖ Choose sampling method:", list(sampling_methods.keys()), horizontal=True, index=0)
+    sampling_method = st.radio("⚖ Choose sampling method:", list(None) + list(sampling_methods.keys()), horizontal=True, index=0)
     return sampling_method
 
 def balance_data(df, target_column, sampling_method, sampling_strategy):

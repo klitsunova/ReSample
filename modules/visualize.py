@@ -28,7 +28,7 @@ def show_pie_chart(df, target_column):
                                     <br>Percentage: {row['percentage']:.2f}%", 
                                     axis=1)
 
-    fig = px.pie(df, 
+    fig = px.pie(df_pie, 
                  names=target_column, 
                  values='count', 
                  hover_data={'info': True}, 
