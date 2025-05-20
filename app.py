@@ -1,5 +1,5 @@
 import streamlit as st
-from modules import upload, preprocess, balance, visualize, download
+from modules import upload, preprocess, balance, visualize
 import assets.markdown as markdown
 
 markdown.set_markdown()
@@ -10,6 +10,17 @@ if 'df' in locals() and df is not None:
     target_column = balance.get_target_column(df)
     if target_column is not None:
         visualize.show_distribution(df, target_column)
+        st.write("Based on the size of your data set and the imbalance ratio, the following balancing methods may be suitable for you:")
+        st.write("SMOTE + OSS")
+        st.write("Random Oversampling + Random Undersampling")
+        st.write("Random Oversampling")
+        st.write("B-SMOTE SVM")
+        st.write("Random Oversampling + TomekLinks")
+        st.write("Random Oversampling + NCR")
+        st.write("Random Oversampling + ENN")
+        st.write("Random Oversampling + OSS")
+        st.write("B-SMOTE SVM + Random Undersampling")
+        st.write("OSS")
         sampling_strategy = balance.get_sampling_strategy()
         sampling_method = balance.get_sampling_method()
         if sampling_strategy is not None and sampling_method is not None:
