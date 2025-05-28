@@ -10,10 +10,13 @@
 ## Overview
 **ReSample** is a web application designed to automatically balance datasets for machine learning tasks. It helps address class imbalances in datasets, improving model generalization and performance. It provides a user-friendly interface to handle missing values, balance class distributions, visualize the results and export the processed dataset.
 
-<img src="https://github.com/user-attachments/assets/40b48ad3-ac7d-4cb1-ac44-cd307f62cd13" width="700">
+Additionally, **ReSample** features a **recommendation model** that suggests ten of the most optimal combinations of balancing methods based on the size and imbalance ratio of the uploaded dataset.
 
+<img src="https://github.com/user-attachments/assets/3c4b555a-1fb1-4644-be6f-97eb00515435" width="700">
 
-<img src="https://github.com/user-attachments/assets/c9c648f8-4197-4b19-b33a-ff4647139ebd" width="700">
+<img src="https://github.com/user-attachments/assets/dbf114b1-7438-4ced-b41b-5afa5da97478" width="700">
+
+<img src="https://github.com/user-attachments/assets/fb01d179-ea21-4b70-93e8-f2ce2826ace0" width="700">
 
 ---
 
@@ -28,7 +31,8 @@ Experience the deployed with Streamlit app here:
 ## Features
 1. Upload or use a sample dataset.
 2. Handle missing values with various strategies (drop, fiil with median/moda/mean).
-3. Balance class distribution:
+3. Get recommendations about balancing methods based on dataset size and imbalance ratio. 
+4. Balance class distribution:
     - Oversampling:
         - Random Oversampling
         - SMOTE
@@ -43,5 +47,5 @@ Experience the deployed with Streamlit app here:
         - ENN
         - OSS
         - NCR
-4. Visualize data before and after balancing (Pie & Bar charts).
-5. Export the processed dataset.
+5. Visualize data before and after balancing (Pie & Bar charts).
+6. Export the processed dataset.
