@@ -22,7 +22,7 @@ def upload_new_dataset():
         return None
 
 def upload_sample_dataset():
-    sample_data_path = "sample_imbalanced_data_missing_data.csv"
+    sample_data_path = "assets/sample_imbalanced_data_missing_data.csv"
     with st.spinner("⏳ Loading sample dataset..."):
         time.sleep(1)
         df = pd.read_csv(sample_data_path)
